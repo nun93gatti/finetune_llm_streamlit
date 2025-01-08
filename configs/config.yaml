@@ -1,0 +1,13 @@
+# Model configuration
+model_name: "EleutherAI/pythia-70m"  # Example small model
+output_dir: "outputs"
+
+# Training parameters
+num_epochs: 3
+batch_size: 4
+save_steps: 500
+logging_steps: 100
+
+# Data configuration
+data_path: "data/raw"
+processed_data_path: "data/processed" 

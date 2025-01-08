@@ -1,0 +1,24 @@
+model_a:
+  weight_decay: 0.01
+  optim: "adamw_8bit"
+  description: "Model A - Small and efficient"
+
+model_b:
+  weight_decay: 0.01
+  optim: "adamw_8bit"
+  description: "Model B - Balanced performance"
+
+model_c:
+  weight_decay: 0.01
+  optim: "adamw_8bit"
+  description: "Model C - High capacity"
+
+model_d:
+  weight_decay: 0.01
+  optim: "adamw_8bit"
+  description: "Model D - Research focused"
+
+model_e:
+  weight_decay: 0.01
+  optim: "adamw_8bit"
+  description: "Model E - Production ready" 

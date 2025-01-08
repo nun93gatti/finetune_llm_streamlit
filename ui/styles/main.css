@@ -1,0 +1,82 @@
+/* Custom styles for the app */
+.stButton button {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Navigation Sidebar Styling */
+.sidebar-header {
+    margin-top: -1rem;
+    padding: 1rem;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-separator {
+    margin: 1.5rem 0;
+    padding: 0.5px;
+    background: linear-gradient(90deg, 
+        rgba(76, 175, 80, 0.1), 
+        rgba(76, 175, 80, 0.5), 
+        rgba(76, 175, 80, 0.1));
+}
+
+/* Radio button styling for navigation */
+.stRadio > label {
+    display: none;
+}
+
+.stRadio > div[role="radiogroup"] > label {
+    padding: 1rem;
+    background: white;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.stRadio > div[role="radiogroup"] > label:hover {
+    background: #f5f5f5;
+    transform: translateX(5px);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Selected radio button styling */
+.stRadio > div[role="radiogroup"] > label[data-checked="true"] {
+    background: #4CAF50;
+    color: white;
+    border: 1px solid #45a049;
+    transform: translateX(10px);
+}
+
+/* JSON display styling */
+.element-container div.json-container {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #dee2e6;
+}
+
+/* Success message styling */
+.stSuccess {
+    padding: 0.75rem;
+    border-radius: 5px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
