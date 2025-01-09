@@ -1,24 +1,60 @@
-model_a:
+Meta-Llama-3.1-70B-Instruct-bnb-4bit:
+  description: Meta-Llama-3.1-70B-Instruct-bnb-4bit is a cutting-edge model boasting 70 billion parameters, tailored specifically for instruction-following tasks. Its size makes it ideal for tackling complex, high-level reasoning and language generation, while the 4-bit quantization ensures it remains efficient for deployment even in resource-constrained environments. This model is a top choice for scenarios requiring both scale and fine-tuned performance.
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0001
+  lr_scheduler_type: linear
+  max_steps: 60
+  optim: adamw_8bit
+  per_device_train_batch_size: 2
+  seed: 3407
+  warmup_steps: 5
   weight_decay: 0.01
-  optim: "adamw_8bit"
-  description: "Model A - Small and efficient"
-
-model_b:
+  max_seq_length: 2048
+Meta-Llama-3.1-8B-bnb-4bit:
+  description: Meta-Llama-3.1-8B-bnb-4bit, a smaller sibling in the Meta-Llama-3.1 series, sacrifices parameter size for greater efficiency, with only 8 billion parameters. While it doesn’t match the depth of its 70B counterpart, it offers solid general-purpose language generation capabilities, making it better suited for environments where computational resources or speed take priority over sheer model complexity.
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0001
+  lr_scheduler_type: linear
+  max_steps: 60
+  optim: adamw_8bit
+  per_device_train_batch_size: 2
+  seed: 3407
+  warmup_steps: 5
   weight_decay: 0.01
-  optim: "adamw_8bit"
-  description: "Model B - Balanced performance"
-
-model_c:
+  max_seq_length: 2048
+gemma-7b-bnb-4bit:
+  description: Gemma-7B-bnb-4bit is a lightweight model with 7 billion parameters, designed to deliver a balance between efficiency and versatility. While not as deeply specialized or fine-tuned as some of its peers, its compact size and 4-bit quantization make it highly practical for a wide range of tasks, especially in scenarios where hardware constraints are significant.
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0001
+  lr_scheduler_type: linear
+  max_steps: 60
+  optim: adamw_8bit
+  per_device_train_batch_size: 2
+  seed: 3407
+  warmup_steps: 5
   weight_decay: 0.01
-  optim: "adamw_8bit"
-  description: "Model C - High capacity"
-
-model_d:
+  max_seq_length: 2048
+mistral-7b-instruct-v0.3-bnb-4bit:
+  description: Mistral-7B-Instruct-v0.3-bnb-4bit builds on a 7-billion parameter architecture, but its standout feature is its optimization for instruction-following tasks. This model, in its v0.3 iteration, demonstrates refined instruction comprehension and precision in generating responses, making it a great choice for applications requiring interactive and guided queries. The inclusion of 4-bit quantization further enhances its deployability in limited-resource settings.
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0001
+  lr_scheduler_type: linear
+  max_steps: 60
+  optim: adamw_8bit
+  per_device_train_batch_size: 2
+  seed: 3407
+  warmup_steps: 5
   weight_decay: 0.01
-  optim: "adamw_8bit"
-  description: "Model D - Research focused"
-
-model_e:
+  max_seq_length: 2048
+mistral-7b-v0.3-bnb-4bit:
+  description: Mistral-7B-v0.3-bnb-4bit shares the same underlying architecture as its instruction-tuned counterpart but is not specifically optimized for guided tasks. Instead, it offers a broader range of natural language understanding and generation capabilities. As a general-purpose model, it strikes a balance between flexibility and efficiency, with the v0.3 iteration showcasing iterative improvements in its performance.
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0001
+  lr_scheduler_type: linear
+  max_steps: 60
+  optim: adamw_8bit
+  per_device_train_batch_size: 2
+  seed: 3407
+  warmup_steps: 5
   weight_decay: 0.01
-  optim: "adamw_8bit"
-  description: "Model E - Production ready" 
+  max_seq_length: 2048
