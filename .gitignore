@@ -30,7 +30,6 @@ ENV/
 
 # IDE
 .idea/
-.vscode/
 
 # Model outputs and data
 outputs/

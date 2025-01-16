@@ -36,13 +36,27 @@ def main():
     # Main content area
     if selected_page == "Choose LLM":
         llm_obj = choose_llm_page(st.session_state.model_configs)
+        st.session_state["llm_obj"] = llm_obj
+        st.session_state["llm_selected"] = llm_obj is not None
     elif selected_page == "Import Dataset":
-        load_dataset("")
-        # Add your dataset import logic here
-
+        if st.session_state.get("llm_selected", False):
+            preprocessed_df = load_dataset(st.session_state["llm_obj"])
+            st.session_state["input_selected"] = preprocessed_df is not None
+            st.session_state["preprocessed_df"] = preprocessed_df
+            print("Ciao")
+        else:
+            st.warning("You need to select an LLM before proceeding.")
     elif selected_page == "Training":
-        st.title("Training Configuration")
-        st.info("Training configuration will be implemented here.")
+        if st.session_state.get("preprocessed_df", False) and st.session_state.get(
+            "llm_selected", False
+        ):
+            st.title("Training Configuration")
+            st.title("Training Configuration")
+            st.info("Training configuration will be implemented here.")
+        else:
+            st.warning(
+                "You need to select an LLM and import a dataset before proceeding."
+            )
         # Add your training configuration logic here
 
     elif selected_page == "Inference":

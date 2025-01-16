@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+          "name": "Streamlit finetune LLM",
+          "type": "python",
+          "request": "launch",
+          "module": "streamlit",
+          "args": [
+              "run",
+              "${workspaceFolder}/src/app.py"
+          ],
+          "console": "integratedTerminal",
+          "justMyCode": false,
+          "purpose": ["debug-in-terminal"],
+          "subProcess": true,
+          "redirectOutput": true
+        }
+      ],
+    
+  }

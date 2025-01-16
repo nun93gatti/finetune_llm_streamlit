@@ -38,7 +38,7 @@ model = FastLanguageModel.get_peft_model(
 
 
 # Load the Parquet file into a DataFrame
-df = pd.read_parquet(r"C:\Users\CAMNG3\Downloads\train-00000-of-00001.parquet")[:20]
+df = pd.read_parquet(r"C:\Users\CAMNG3\Downloads\train-00000-of-00001.parquet")[:10]
 
 # Convert the DataFrame to a Hugging Face Dataset
 dataset = Dataset.from_pandas(df)
@@ -82,7 +82,7 @@ trainer = SFTTrainer(
         lr_scheduler_type="linear",
         per_device_train_batch_size=8,
         gradient_accumulation_steps=2,
-        num_train_epochs=1,
+        num_train_epochs=2,
         fp16=not is_bfloat16_supported(),
         bf16=is_bfloat16_supported(),
         logging_steps=1,
