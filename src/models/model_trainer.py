@@ -1,6 +1,6 @@
-import torch
-
 from unsloth import FastLanguageModel, is_bfloat16_supported
+from trl import SFTTrainer
+from transformers import TrainingArguments, TextStreamer
 
 
 class ModelTrainer:
@@ -35,35 +35,30 @@ class ModelTrainer:
             use_gradient_checkpointing="unsloth",
         )
 
-    # def __init__(self, config):
-    #     self.config = config
-    #     self.model = None
-    #     self.tokenizer = None
+    def train(self, data_obj):
+        trainer = SFTTrainer(
+            model=self.model,
+            tokenizer=data_obj.tokenizer,
+            train_dataset=data_obj.dataset,
+            dataset_text_field="text",
+            max_seq_length=self.config["max_seq_length"],
+            dataset_num_proc=1,
+            packing=True,
+            args=TrainingArguments(
+                learning_rate=self.config["learning_rate"],
+                lr_scheduler_type="linear",
+                per_device_train_batch_size=self.config["per_device_train_batch_size"],
+                gradient_accumulation_steps=self.config["gradient_accumulation_steps"],
+                num_train_epochs=2,
+                fp16=not is_bfloat16_supported(),
+                bf16=is_bfloat16_supported(),
+                logging_steps=1,
+                optim=self.config["optim"],
+                weight_decay=self.config["weight_decay"],
+                warmup_steps=self.config["warmup_steps"],
+                output_dir="output",
+                seed=0,
+            ),
+        )
 
-    # def load_model(self):
-    #     """
-    #     Load the base model and tokenizer
-    #     """
-    #     self.model = AutoModelForCausalLM.from_pretrained(self.config["model_name"])
-    #     self.tokenizer = AutoTokenizer.from_pretrained(self.config["model_name"])
-
-    # def train(self, training_data):
-    #     """
-    #     Fine-tune the model
-    #     """
-    #     if self.model is None:
-    #         self.load_model()
-
-    #     training_args = TrainingArguments(
-    #         output_dir=self.config["output_dir"],
-    #         num_train_epochs=self.config["num_epochs"],
-    #         per_device_train_batch_size=self.config["batch_size"],
-    #         save_steps=self.config["save_steps"],
-    #         logging_steps=self.config["logging_steps"],
-    #     )
-
-    #     trainer = Trainer(
-    #         model=self.model, args=training_args, train_dataset=training_data
-    #     )
-
-    #     trainer.train()
+        trainer.train()

@@ -4,7 +4,7 @@ from data.data_loader import DataLoader
 
 
 def load_dataset(llm_obj: ModelTrainer):
-    preprocessed_df = None
+    data_loader_obj = None
     st.title("Import Dataset")
     st.markdown("---")
 
@@ -18,15 +18,17 @@ def load_dataset(llm_obj: ModelTrainer):
 
         if uploaded_file is not None:
             with st.spinner(f"Loading and preprocessing data:..."):
-                preprocessed_df = DataLoader(uploaded_file, llm_obj.tokenizer).dataset
+                data_loader_obj = DataLoader(uploaded_file, llm_obj.tokenizer)
+                data_loader_obj.load_training_data()
                 print("done")
 
     # Right column - Display Preprocessed Dataset Format
     with col2:
         st.markdown("### Dataset Format After Preprocessing")
         if "preprocessed_df" in st.session_state:
-            st.dataframe(st.session_state["preprocessed_df"])
+            st.dataframe(data_loader_obj.dataset)
+
         else:
             st.info("Upload a dataset to see its format after preprocessing.")
 
-    return preprocessed_df
+    return data_loader_obj
